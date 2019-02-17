@@ -1,0 +1,20 @@
+<section id="dynamicTableContainer" [ngClass]="{'editable-section' : editMode}" padding *ngIf="tableData">
+  <table class="table">
+    <tbody [ngClass]="{'editable-table' : editMode}">
+      <tr *ngFor="let row of getArrayFromCount(tableData.rowcount); let rowIndex=  index">
+        <td *ngFor="let column of getArrayFromCount(tableData.columncount); let columnIndex=  index">
+          <ng-container *ngIf="!editMode">{{getData(rowIndex, columnIndex)}}</ng-container>
+          <ng-container *ngIf="editMode">
+            <ion-input (keyup)="setData($event, rowIndex, columnIndex)" ></ion-input>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="tableData.rowcount && !tableData.rowcount.length">
+      <tr>
+        <td>No Data Available</td>
+      </tr>
+    </tfoot>
+  </table>
+</section>
+<ion-button *ngIf="tableData && tableData.rowcount && editMode" color="primary" expand="block" (click)="saveTable()">Save Table</ion-button>

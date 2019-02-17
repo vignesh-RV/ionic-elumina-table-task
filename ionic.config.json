@@ -1,0 +1,7 @@
+{
+  "name": "eluminatestpro",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

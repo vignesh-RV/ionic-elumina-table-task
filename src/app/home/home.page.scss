@@ -1,0 +1,46 @@
+
+ion-title{
+    text-align: center;
+}
+
+#newTableSection{
+    background-color: #e9edf5;
+    padding: 5px 15px 20px;
+    // height: 100%;
+    form{
+        ion-label{
+            font-size: 14px;
+            &::after {
+                content: "*";
+                color: red;
+            }
+        }
+        ion-input{
+            background-color: #f5f4f4;
+            border-radius: 6px;
+            margin: 6px 0px 5px 15px;
+        }
+        ion-button{
+            margin-top: 15px;
+        }
+    }
+}
+#AllTables{
+    .delete-icon{
+        float: right;
+    }
+    .accordion {
+        box-shadow: 2px 3px 1px #eee;
+        border: solid 1px #eee;
+        padding: 5px 15px;
+        margin: 5px 0;
+        .table-title{
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9edf5;
+        }
+        .accordion-content{
+            border-top: solid 1px #aaa;
+        }
+    }
+}

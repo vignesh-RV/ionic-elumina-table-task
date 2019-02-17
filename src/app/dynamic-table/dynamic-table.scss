@@ -1,0 +1,28 @@
+
+#dynamicTableContainer{
+    overflow: auto;
+    max-height: 300px;
+    table{
+        border: solid 1px #eee;
+        width: 100%;
+        td{
+            padding: 5px 8px;
+            border: solid 1px;
+            text-align: center;
+        }
+    }
+    inner-scroll.scroll-y{
+        overflow: auto !important;
+    }
+    .editable-table{
+        td{
+            min-width: 70px;
+        }
+    }
+}
+
+.editable-section{
+    border: solid 1px #3880ff;
+    padding: 0;
+    margin: 15px 0;
+}

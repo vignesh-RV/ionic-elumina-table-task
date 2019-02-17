@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Elumina Task
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="newTableSection">
+    <h4>Dynamic Table</h4>
+    <form novalidate [formGroup]="tableForm">
+
+      <ion-item>
+          <ion-label stacked>Name</ion-label>
+          <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>No Of Columns</ion-label>
+          <ion-input formControlName="columncount"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>No Of Rows</ion-label>
+          <ion-input formControlName="rowcount"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" expand="block" 
+      [disabled]="!tableForm.valid"(click)="createTable()">Create</ion-button>
+      
+      <!-- <div> -->
+            <!-- <ng-container *ngFor="let validation of validation_messages.myField" >
+              <div *ngIf="form.get('myField').hasError(validation.type)">
+                <p>{{validation.message}}</p>
+              </div>
+            </ng-container> -->
+      <!-- </div> -->
+    </form>
+    <dynamic-table *ngIf="showTable" [tableData]="tableData" [editMode]="true" (saveTable)="saveTable($event)"></dynamic-table>
+  </div>
+  <div id="AllTables">
+    <h3 class="ion-title">Available Tables</h3>
+    <ng-container *ngFor="let table of allTables">
+      <div [ngClass]="{'accordion': table.expand}">
+        <p  [ngClass]="{'accordion': !table.expand}" class="table-title" (click)="table.expand = !table.expand">
+          {{table.name}}
+          <span class="delete-icon" (click)="deleteTable(table)">X
+            <!-- <i class="icon ion-delete"></i> -->
+          </span>	
+        </p>
+        <section class="accordion-content" *ngIf="table.expand">
+            <dynamic-table [tableData]="table"></dynamic-table>
+        </section>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!allTables || (allTables && !allTables.length)">No Data Available</ng-container>
+  </div>
+</ion-content>
